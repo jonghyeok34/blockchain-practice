@@ -3,6 +3,12 @@
 - https://docs.openzeppelin.com/contracts/2.x/api/token/erc721
 2. nft-mix
 - https://github.com/PatrickAlphaC/nft-mix
-
-3. store data decentralized
+3. nft - dugeons and dragons 
+- https://github.com/PatrickAlphaC/dungeons-and-dragons-nft 
+4. store data decentralized
 - ipfs
+
+# IPFS
+- Why is is IPFS decentralized?
+- Any one can mint an NFT here - not verifiabley scarce or random
+
