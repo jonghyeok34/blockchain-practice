@@ -1,4 +1,4 @@
-from scripts.helpful_scripts import fund_with_link, get_account, OPENSEA_URI, get_contract
+from scripts.helpful_scripts import GAS_LIMIT_WEI, fund_with_link, get_account, OPENSEA_URI, get_contract
 from brownie import AdvancedCollectible, config, network
 
 sample_token_uri = (
@@ -17,7 +17,8 @@ def deploy_and_create():
         {"from": account},
     )
     fund_with_link(advanced_collectible.address)
-    creating_tx = advanced_collectible.createCollectible({"from": account})
+    print(f"GAS_LIMIT_WEI:{GAS_LIMIT_WEI}")
+    creating_tx = advanced_collectible.createCollectible({"from": account, "gas_limit": GAS_LIMIT_WEI, "allow_revert": True})
     creating_tx.wait(1)
     print("New token has been created!")
     

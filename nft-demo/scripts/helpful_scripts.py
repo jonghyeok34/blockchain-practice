@@ -9,6 +9,12 @@ from brownie import (
 )
 from web3 import Web3
 
+GAS_LIMIT_WEI_DICT = {
+    "rinkeby": 29900000,
+    "ganache-local": 6721975
+}
+GAS_LIMIT_WEI = GAS_LIMIT_WEI_DICT[network.show_active()] if GAS_LIMIT_WEI_DICT.get(network.show_active()) else 6721975
+
 LOCAL_BLOCKCHAIN_ENVIRONMENTS = ["hardhat", "development", "ganache", "mainnet-fork"]
 OPENSEA_URI = "https://testnets.opensea.io/assets/{}/{}"
 
@@ -72,7 +78,7 @@ def deploy_mocks(decimals=DECIMALS, initial_value=INITIAL_VALUE):
     VRFCoordinatorMock.deploy(link_token.address, {"from": account})
 
 def fund_with_link(
-    contract_address, account=None, link_token=None, amount=Web3.toWei(1, "ether")
+    contract_address, account=None, link_token=None, amount=Web3.toWei(0.25, "ether")
 ):
     account = account if account else get_account()
     link_token = link_token if link_token else get_contract("link_token")
