@@ -11,10 +11,11 @@ wallets:
   from_key: ${PRIVATE_KEY}
 networks:
   development:
-    keyhash: '0xd89b2bf150e3b9e13446986e571fb9cab24b13cea0a43ea20a6049a85cc807cc'
+    keyhash: '0x2ed0feb3e7fd2022120aa84fab1945545a9f2ffc9076fd6156fa96eaff4c1311'
     fee: 100000000000000000 # 0.1 LINK
   rinkeby:
-    vrf_coordinator: '0x6168499c0cFfCaCD319c818142124B7A15E857ab'
+    # vrf version 1
+    vrf_coordinator: '0xb3dCcb4Cf7a26f6cf6B120Cf5A73875B7BBc655B'
     link_token: '0x01BE23585060835E02B77ef475b0Cc51aA1e0709'
-    keyhash: '0xd89b2bf150e3b9e13446986e571fb9cab24b13cea0a43ea20a6049a85cc807cc'
+    keyhash: '0x2ed0feb3e7fd2022120aa84fab1945545a9f2ffc9076fd6156fa96eaff4c1311' # 30 gwei key hash
     fee: 100000000000000000 # 0.1 LINK

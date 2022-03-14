@@ -14,11 +14,14 @@ def deploy_and_create():
         get_contract("link_token"),
         network_config["keyhash"],
         network_config["fee"],
-        {"from": account},
+        {"from": account, "gas_limit": GAS_LIMIT_WEI, "gas_price": GAS_LIMIT_WEI*100 },
     )
     fund_with_link(advanced_collectible.address)
     print(f"GAS_LIMIT_WEI:{GAS_LIMIT_WEI}")
-    creating_tx = advanced_collectible.createCollectible({"from": account, "gas_limit": GAS_LIMIT_WEI, "allow_revert": True})
+    
+    # creating_tx = advanced_collectible.createCollectible({"from": account, "gas_limit": GAS_LIMIT_WEI , "gas_price": GAS_LIMIT_WEI *300, "allow_revert": True})
+    
+    creating_tx = advanced_collectible.createCollectible({"from": account, "gas_limit": GAS_LIMIT_WEI/3 , "gas_price": GAS_LIMIT_WEI *30, "allow_revert": True})
     creating_tx.wait(1)
     print("New token has been created!")
     

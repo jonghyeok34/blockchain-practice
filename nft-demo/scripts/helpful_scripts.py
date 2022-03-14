@@ -62,6 +62,7 @@ def get_contract(contract_name):
         contract_address = config["networks"][network.show_active()][contract_name]
         # address
         # ABI
+        
         contract = Contract.from_abi(
             contract_type._name, contract_address, contract_type.abi
         )
@@ -82,8 +83,11 @@ def fund_with_link(
 ):
     account = account if account else get_account()
     link_token = link_token if link_token else get_contract("link_token")
-    funding_tx = link_token.transfer(contract_address, amount, {"from": account})
+    print(f"link_token:{link_token}")
+    print(f"funding_tx:{contract_address}, {amount}")
+    funding_tx = link_token.transfer(contract_address, amount, {"from": account, "gas_limit": GAS_LIMIT_WEI/100, "gas_price": 22000000000})
     funding_tx.wait(1)
+    
     print(f"Funded {contract_address}")
     
     
