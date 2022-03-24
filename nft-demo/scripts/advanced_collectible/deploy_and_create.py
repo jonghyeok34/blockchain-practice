@@ -24,6 +24,8 @@ def deploy_and_create():
     creating_tx = advanced_collectible.createCollectible({"from": account, "gas_limit": GAS_LIMIT_WEI/3 , "gas_price": GAS_LIMIT_WEI *30, "allow_revert": True})
     creating_tx.wait(1)
     print("New token has been created!")
-    
+    return advanced_collectible, creating_tx
+
+        
 def main():
     deploy_and_create()
