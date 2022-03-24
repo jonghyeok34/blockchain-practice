@@ -19,5 +19,5 @@ def test_can_create_advanced_collectible():
     )
     
     # Assert
-    assert advanced_collectible.tokenCounter() == 0
+    assert advanced_collectible.tokenCounter() == 1
     assert advanced_collectible.tokenIdToBreed(0) == random_number % 3

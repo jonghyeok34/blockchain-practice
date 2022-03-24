@@ -27,6 +27,11 @@ contract_to_mock = {
     "vrf_coordinator": VRFCoordinatorMock,
     "link_token": LinkToken,
 }
+BREED_MAPPING = {0:"PUG", 1:"SHIBA_INU", 2:"ST_BERNARD"}
+
+
+def get_breed(breed_number):
+    return BREED_MAPPING[breed_number]    
 
 
 def get_account(index=None, id=None):
