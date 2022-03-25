@@ -5,8 +5,8 @@
 - https://github.com/PatrickAlphaC/nft-mix
 3. nft - dugeons and dragons 
 - https://github.com/PatrickAlphaC/dungeons-and-dragons-nft 
-4. store data decentralized
-- ipfs
+4. store data decentralized : ipfs
+- https://docs.ipfs.io/install/command-line/#official-distributions
 
 # IPFS
 - Why is is IPFS decentralized?
