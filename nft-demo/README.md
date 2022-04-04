@@ -7,7 +7,7 @@
 - https://github.com/PatrickAlphaC/dungeons-and-dragons-nft 
 4. store data decentralized : ipfs
 - https://docs.ipfs.io/install/command-line/#official-distributions
-
+- alternative(pinata) : https://youtu.be/M576WGiDBdQ?t=41064
 # IPFS
 - Why is is IPFS decentralized?
 - Any one can mint an NFT here - not verifiabley scarce or random

@@ -18,10 +18,30 @@ breed_to_image_uri = {
 def main():
     breeds = ["PUG", "SHIBA_INU", "ST_BERNARD"]
     for breed in breeds:
-        metadata_file_name = "./img/" + breed.lower().replace("_", "-") + ".png"
-        upload_to_ipfs(metadata_file_name)
+        metadata_file_name = (
+            f"./metadata/{network.show_active()}/default-{breed}.json"
+        )
+        collectible_metadata = metadata_template
+        if Path(metadata_file_name).exists():
+            print(f"{metadata_file_name} already exists")
+        else:
+            print(f"Creating metadata file: {metadata_file_name}")
+            collectible_metadata["name"] = breed
+            collectible_metadata["description"] = f"An adorable {breed} pup!"
+            image_path = "./img/" + breed.lower().replace("_", "-") + ".png"
 
+            image_uri = (
+                upload_to_ipfs(image_path)
+                if os.getenv("UPLOAD_IPFS") == "true"
+                else breed_to_image_uri[breed]
+            )
+
+            collectible_metadata["image"] = image_uri
+            with open(metadata_file_name, "w") as file:
+                json.dump(collectible_metadata, file)
+            upload_to_ipfs(metadata_file_name)
 '''
+
 
 def main():
     advanced_collectible = AdvancedCollectible[-1]
