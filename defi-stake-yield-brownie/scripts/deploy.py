@@ -32,7 +32,7 @@ def deploy_token_farm_and_dapp_token():
 
     return token_farm, dapp_token
 
-def add_allowed_tokens(token_farm, dict_of_allowed_tokens, account):
+def add_allowed_tokens(token_farm:TokenFarm, dict_of_allowed_tokens:dict, account):
     for token in dict_of_allowed_tokens:
         add_tx = token_farm.addAllowedTokens(token.address, {"from": account})
         add_tx.wait(1)
