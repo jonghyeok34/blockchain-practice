@@ -101,9 +101,8 @@ contract TokenFarm is Ownable {
             allowedTokensIndex < allowedTokens.length;
             allowedTokensIndex++
         ) {
-            totalValue += stakingBalance[allowedTokens[allowedTokensIndex]][
-                _user
-            ];
+            
+            totalValue += getUserSingleTokenValue(_user, allowedTokens[allowedTokensIndex]);
         }
         return totalValue;
     }
@@ -111,19 +110,22 @@ contract TokenFarm is Ownable {
     function getUserSingleTokenValue(address _user, address _token)
         public
         view
-        returns (uint256)
-    {
-        if (uniqueTokensStaked[_user] <= 0) {
-            return 0;
-        }
-        // price of the token * stakingBalance[_token][_user]
-        // 10 ETH
-        // ETH/USD -> 100
-        // 10 * 100 = 1000
-        (uint256 price, uint256 decimals) = getTokenValue(_token);
-        return (stakingBalance[_token][_user] * price) / (10**decimals);
+        returns (uint256) {
+            if (uniqueTokensStaked[_user] <= 0) {
+                return 0;
+            }
+            // price of the token * stakingBalance[_token][_user]
+            (uint256 price, uint256 decimals) = getTokenValue(_token);
+            // example
+            // 10 ETH (10* 10**eth_decimals)
+            // ETH/USD -> 100 -> 100 * 10 * token_decimals
+            // 10 * 100 = 1000
+            return (stakingBalance[_token][_user] * price) / (10**decimals);
     }
 
+    /**
+    * get price value from chainlink
+    */
     function getTokenValue(address _token)
         public
         view
@@ -131,6 +133,7 @@ contract TokenFarm is Ownable {
     {
         // priceFeedAddress
         address priceFeedAddress = tokenPriceFeedMapping[_token];
+        // get price feed from chainlink
         AggregatorV3Interface priceFeed = AggregatorV3Interface(
             priceFeedAddress
         );

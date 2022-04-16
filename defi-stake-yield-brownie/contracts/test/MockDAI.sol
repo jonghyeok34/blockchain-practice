@@ -6,5 +6,5 @@ contract MockDAI is ERC20{
     constructor() public ERC20("MockDAI", "MOCK"){
         _mint(msg.sender, 1000000*10*18); 
     }
-
+    
 }

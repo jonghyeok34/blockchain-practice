@@ -2,12 +2,9 @@ from brownie import (
     network,
     accounts,
     config,
-    LinkToken,
     MockV3Aggregator,
-    MockOracle,
     MockDAI,
     MockWETH,
-    VRFCoordinatorV2Mock,
     Contract,
     web3,
 )
@@ -32,6 +29,7 @@ contract_to_mock = {
 
 DECIMALS = 18
 INITIAL_VALUE = web3.toWei(2000, "ether")
+INITIAL_PRICE_FEED_VALUE = INITIAL_VALUE
 BASE_FEE = 100000000000000000  # The premium
 GAS_PRICE_LINK = 1e9  # Some value calculated depending on the Layer 1 cost and Link
 
@@ -102,9 +100,7 @@ def deploy_mocks(decimals=DECIMALS, initial_value=INITIAL_VALUE):
     """
     print(f"The active network is {network.show_active()}")
     print("Deploying Mocks...")
-    account = get_account()
-    print("Deploying Mock Link Token...")
-    link_token = LinkToken.deploy({"from": account})
+    account = get_account()   
     print("Deploying Mock Price Feed...")
     mock_price_feed = MockV3Aggregator.deploy(
         decimals, initial_value, {"from": account}
