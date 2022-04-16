@@ -62,11 +62,16 @@ contract TokenFarm is Ownable {
         }
     }
 
+    /**
+    
+     */
     function unstakeTokens(address _token) public {
         uint256 balance = stakingBalance[_token][msg.sender];
+        require(uniqueTokensStaked[msg.sender] > 0, "No tokens to unstake");
         require(balance > 0, "You must have a balance to unstake");
         IERC20(_token).transfer(msg.sender, balance);
         stakingBalance[_token][msg.sender] = 0;
+        // to block re entry issue
         uniqueTokensStaked[msg.sender] -= 1;
     }
 
@@ -101,7 +106,7 @@ contract TokenFarm is Ownable {
             allowedTokensIndex < allowedTokens.length;
             allowedTokensIndex++
         ) {
-            
+
             totalValue += getUserSingleTokenValue(_user, allowedTokens[allowedTokensIndex]);
         }
         return totalValue;
