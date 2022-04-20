@@ -2,7 +2,7 @@
 - fau token token faucet: https://erc20faucet.com/
 - chain link mix: https://github.com/smartcontractkit/chainlink-mix
 - usedapp: https://usedapp.io/
-
+- material ui : https://mui.com/
 # frontend
 
 ## installation 
@@ -28,4 +28,8 @@ yarn start
 
 ```
 yarn add @usedapp/core
+```
+## mui
+```
+yarn add @mui/material @mui/styles @emotion/react @emotion/styled
 ```

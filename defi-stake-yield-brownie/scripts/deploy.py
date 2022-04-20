@@ -38,7 +38,12 @@ def add_allowed_tokens(token_farm:TokenFarm, dict_of_allowed_tokens:dict, accoun
         add_tx.wait(1)
         set_tx = token_farm.setPriceFeedContract(token.address, dict_of_allowed_tokens[token], {"from": account})
         set_tx.wait(1)
+
     return token_farm
+
+def update_front_end():
+    # send the front end our config in JSON format
+    pass
 
 def main():
     deploy_token_farm_and_dapp_token()
