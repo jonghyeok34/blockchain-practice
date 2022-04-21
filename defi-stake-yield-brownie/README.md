@@ -31,7 +31,7 @@ yarn add @usedapp/core
 ```
 ## mui
 ```
-yarn add @mui/material @mui/styles @emotion/react @emotion/styled
+yarn add @mui/material @mui/styles @emotion/react @emotion/styled @mui/lab
 ```
 ## ethers
 ```

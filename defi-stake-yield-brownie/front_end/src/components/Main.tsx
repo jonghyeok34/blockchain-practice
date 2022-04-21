@@ -27,9 +27,9 @@ export const Main =() =>{
     // send the build folder 
     const {chainId, error} =useEthers();
     const networkName:string = chainId ? helperConfig[chainId]: "dev";
-    const dappTokenAddress = chainId? networkMapping[String(chainId)]["DappToken"][0]: constants.AddressZero;
-    const wethTokenAddress = chainId? brownieConfig["networks"][networkName]["weth_token"]: constants.AddressZero;
-    const fauTokenAddress = chainId? brownieConfig["networks"][networkName]["fau_token"]: constants.AddressZero;
+    const dappTokenAddress:string = chainId? networkMapping[String(chainId)]["DappToken"][0]: constants.AddressZero;
+    const wethTokenAddress:string = chainId? brownieConfig["networks"][networkName]["weth_token"]: constants.AddressZero;
+    const fauTokenAddress:string = chainId? brownieConfig["networks"][networkName]["fau_token"]: constants.AddressZero;
     
     const supportedTokens :Array<Token> =[
         {image:dapp, address:dappTokenAddress, name:"DAPP"},
